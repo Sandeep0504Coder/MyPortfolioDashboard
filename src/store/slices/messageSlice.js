@@ -58,7 +58,8 @@ export const getAllMessages = () => async (dispatch) => {
   dispatch(messageSlice.actions.getAllMessagesRequest());
   try {
     const response = await axios.get(
-      `${server}/api/v1/message/getall`
+      `${server}/api/v1/message/getall`,
+      { withCredentials: true }
     );
     dispatch(
       messageSlice.actions.getAllMessagesSuccess(response.data.messages)
@@ -75,7 +76,8 @@ export const deleteMessage = (id) => async (dispatch) => {
   dispatch(messageSlice.actions.deleteMessageRequest());
   try {
     const response = await axios.delete(
-      `${server}/api/v1/message/delete/${id}`
+      `${server}/api/v1/message/delete/${id}`,
+      { withCredentials: true }
     );
     dispatch(messageSlice.actions.deleteMessageSuccess(response.data.message));
     dispatch(messageSlice.actions.clearAllErrors());

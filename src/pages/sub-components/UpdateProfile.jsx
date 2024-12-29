@@ -22,6 +22,7 @@ const UpdateProfile = () => {
   const [fullName, setFullName] = useState(user && user.fullName);
   const [email, setEmail] = useState(user && user.email);
   const [phone, setPhone] = useState(user && user.phone);
+  const [objective, setObjective] = useState(user && user.objective);
   const [aboutMe, setAboutMe] = useState(user && user.aboutMe);
   const [portfolioURL, setPortfolioURL] = useState(user && user.portfolioURL);
   const [linkedInURL, setLinkedInURL] = useState(
@@ -30,11 +31,11 @@ const UpdateProfile = () => {
   const [githubURL, setGithubURL] = useState(
     user && (user.githubURL === "undefined" ? "" : user.githubURL)
   );
-  const [instagramURL, setInstagramURL] = useState(
-    user && (user.instagramURL === "undefined" ? "" : user.instagramURL)
+  const [leetCodeURL, setLeetCodeURL] = useState(
+    user && (user.leetCodeURL === "undefined" ? "" : user.leetCodeURL)
   );
-  const [twitterURL, setTwitterURL] = useState(
-    user && (user.twitterURL === "undefined" ? "" : user.twitterURL)
+  const [hackerRankURL, setHackerRankURL] = useState(
+    user && (user.hackerRankURL === "undefined" ? "" : user.hackerRankURL)
   );
   const [facebookURL, setFacebookURL] = useState(
     user && (user.facebookURL === "undefined" ? "" : user.facebookURL)
@@ -74,12 +75,13 @@ const UpdateProfile = () => {
     formData.append("fullName", fullName);
     formData.append("email", email);
     formData.append("phone", phone);
+    formData.append("objective", objective);
     formData.append("aboutMe", aboutMe);
     formData.append("portfolioURL", portfolioURL);
     formData.append("linkedInURL", linkedInURL);
     formData.append("githubURL", githubURL);
-    formData.append("instagramURL", instagramURL);
-    formData.append("twitterURL", twitterURL);
+    formData.append("leetCodeURL", leetCodeURL);
+    formData.append("hackerRankURL", hackerRankURL);
     formData.append("facebookURL", facebookURL);
     formData.append("avatar", avatar);
     formData.append("resume", resume);
@@ -177,6 +179,14 @@ const UpdateProfile = () => {
                 />
               </div>
               <div className="grid gap-2">
+                <Label>Objective</Label>
+                <Textarea
+                  className="Objective"
+                  value={objective}
+                  onChange={(e) => setObjective(e.target.value)}
+                />
+                </div>
+              <div className="grid gap-2">
                 <Label>About Me</Label>
                 <Textarea
                   className="About Me"
@@ -213,21 +223,21 @@ const UpdateProfile = () => {
                 />
               </div>
               <div className="grid gap-2">
-                <Label>Instagram URL</Label>
+                <Label>LeetCode URL</Label>
                 <Input
                   type="text"
-                  className="Instagram URL"
-                  value={instagramURL}
-                  onChange={(e) => setInstagramURL(e.target.value)}
+                  className="LeetCode URL"
+                  value={leetCodeURL}
+                  onChange={(e) => setLeetCodeURL(e.target.value)}
                 />
               </div>
               <div className="grid gap-2">
-                <Label>Twitter(X) URL</Label>
+                <Label>HackerRank URL</Label>
                 <Input
                   type="text"
-                  className="Twitter(X) URL"
-                  value={twitterURL}
-                  onChange={(e) => setTwitterURL(e.target.value)}
+                  className="HackerRank URL"
+                  value={hackerRankURL}
+                  onChange={(e) => setHackerRankURL(e.target.value)}
                 />
               </div>
               <div className="grid gap-2">

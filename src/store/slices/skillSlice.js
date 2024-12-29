@@ -88,7 +88,8 @@ export const getAllSkills = () => async (dispatch) => {
   dispatch(skillSlice.actions.getAllSkillsRequest());
   try {
     const response = await axios.get(
-      `${server}/api/v1/skill/getall`
+      `${server}/api/v1/skill/getall`,
+      { withCredentials: true }
     );
     dispatch(skillSlice.actions.getAllSkillsSuccess(response.data.skills));
     dispatch(skillSlice.actions.clearAllErrors());
@@ -106,6 +107,7 @@ export const addNewSkill = (data) => async (dispatch) => {
       `${server}/api/v1/skill/add`,
       data,
       {
+        withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
@@ -125,6 +127,7 @@ export const updateSkill = (id, proficiency) => async (dispatch) => {
       `${server}/api/v1/skill/update/${id}`,
       { proficiency },
       {
+        withCredentials: true,
         headers: { "Content-Type": "application/json" },
       }
     );
@@ -139,7 +142,8 @@ export const deleteSkill = (id) => async (dispatch) => {
   dispatch(skillSlice.actions.deleteSkillRequest());
   try {
     const response = await axios.delete(
-      `${server}/api/v1/skill/delete/${id}`
+      `${server}/api/v1/skill/delete/${id}`,
+      { withCredentials: true }
     );
     dispatch(skillSlice.actions.deleteSkillSuccess(response.data.message));
     dispatch(skillSlice.actions.clearAllErrors());

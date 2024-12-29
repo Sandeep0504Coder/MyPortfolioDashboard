@@ -52,6 +52,10 @@ const Profile = () => {
                 <Input type="text" defaultValue={user?.phone} disabled />
               </div>
               <div className="grid gap-2">
+                <Label>Objective</Label>
+                <Textarea defaultValue={user?.objective} disabled />
+              </div>
+              <div className="grid gap-2">
                 <Label>About Me</Label>
                 <Textarea defaultValue={user?.aboutMe} disabled />
               </div>
@@ -68,12 +72,12 @@ const Profile = () => {
                 <Input type="text" defaultValue={user?.linkedInURL} disabled />
               </div>
               <div className="grid gap-2">
-                <Label>Instagram URL</Label>
-                <Input type="text" defaultValue={user?.instagramURL} disabled />
+                <Label>LeetCode URL</Label>
+                <Input type="text" defaultValue={user?.leetCodeURL} disabled />
               </div>
               <div className="grid gap-2">
-                <Label>Twitter(X) URL</Label>
-                <Input type="text" defaultValue={user?.twitterURL} disabled />
+                <Label>HackerRank URL</Label>
+                <Input type="text" defaultValue={user?.hackerRankURL} disabled />
               </div>
               <div className="grid gap-2">
                 <Label>Facebook URL</Label>

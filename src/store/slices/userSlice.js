@@ -117,7 +117,7 @@ export const login = (email, password) => async (dispatch) => {
     const { data } = await axios.post(
       `${server}/api/v1/user/login`,
       { email, password },
-      { headers: { "Content-Type": "application/json" } }
+      { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
     dispatch(userSlice.actions.loginSuccess(data.user));
     dispatch(userSlice.actions.clearAllErrors());
@@ -129,7 +129,7 @@ export const login = (email, password) => async (dispatch) => {
 export const getUser = () => async (dispatch) => {
   dispatch(userSlice.actions.loadUserRequest());
   try {
-    const { data } = await axios.get(`${server}/api/v1/user/me`);
+    const { data } = await axios.get(`${server}/api/v1/user/me`, { withCredentials: true } );
     dispatch(userSlice.actions.loadUserSuccess(data.user));
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
@@ -140,6 +140,7 @@ export const getUser = () => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   try {
     const { data } = await axios.get(
+      { withCredentials: true },
       `${server}/api/v1/user/logout`
     );
     dispatch(userSlice.actions.logoutSuccess(data.message));
@@ -157,6 +158,7 @@ export const updatePassword =
         `${server}/api/v1/user/password/update`,
         { currentPassword, newPassword, confirmNewPassword },
         {
+          withCredentials: true,
           headers: { "Content-Type": "application/json" },
         }
       );
@@ -176,6 +178,7 @@ export const updateProfile = (data) => async (dispatch) => {
       `${server}/api/v1/user/me/profile/update`,
       data,
       {
+        withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       }
     );

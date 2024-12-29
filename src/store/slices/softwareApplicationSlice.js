@@ -75,7 +75,8 @@ export const getAllSoftwareApplications = () => async (dispatch) => {
   );
   try {
     const response = await axios.get(
-      `${server}/api/v1/softwareapplication/getall`
+      `${server}/api/v1/softwareapplication/getall`,
+      { withCredentials: true }
     );
     dispatch(
       softwareApplicationSlice.actions.getAllsoftwareApplicationsSuccess(
@@ -101,6 +102,7 @@ export const addNewSoftwareApplication = (data) => async (dispatch) => {
       `${server}/api/v1/softwareapplication/add`,
       data,
       {
+        withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
@@ -125,7 +127,8 @@ export const deleteSoftwareApplication = (id) => async (dispatch) => {
   );
   try {
     const response = await axios.delete(
-      `${server}/api/v1/softwareapplication/delete/${id}`
+      `${server}/api/v1/softwareapplication/delete/${id}`,
+      { withCredentials: true }
     );
     dispatch(
       softwareApplicationSlice.actions.deletesoftwareApplicationsSuccess(

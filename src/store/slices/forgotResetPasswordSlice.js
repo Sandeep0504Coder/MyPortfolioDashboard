@@ -54,7 +54,7 @@ export const forgotPassword = (email) => async (dispatch) => {
     const response = await axios.post(
       `${server}/api/v1/user/password/forgot`,
       { email },
-      { headers: { "Content-Type": "application/json" } }
+      { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
     console.log(response);
     dispatch(
@@ -78,6 +78,7 @@ export const resetPassword =
         ` ${server}/api/v1/user/password/reset/${token}`,
         { password, confirmPassword },
         {
+          withCredentials: true,
           headers: { "Content-Type": "application/json" },
         }
       );

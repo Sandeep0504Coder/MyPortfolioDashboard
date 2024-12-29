@@ -51,6 +51,7 @@ const UpdateProject = () => {
     const getProject = async () => {
       await axios
         .get(`${server}/api/v1/project/get/${id}`, {
+          withCredentials: true
         })
         .then((res) => {
           setTitle(res.data.project.title);

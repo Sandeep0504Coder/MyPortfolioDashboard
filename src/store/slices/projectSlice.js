@@ -89,7 +89,8 @@ export const getAllProjects = () => async (dispatch) => {
   dispatch(projectSlice.actions.getAllProjectsRequest());
   try {
     const response = await axios.get(
-      `${server}/api/v1/project/getall`
+      `${server}/api/v1/project/getall`,
+      { withCredentials: true }
     );
     dispatch(
       projectSlice.actions.getAllProjectsSuccess(response.data.projects)
@@ -109,6 +110,7 @@ export const addNewProject = (data) => async (dispatch) => {
       `${server}/api/v1/project/add`,
       data,
       {
+        withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
@@ -124,7 +126,8 @@ export const deleteProject = (id) => async (dispatch) => {
   dispatch(projectSlice.actions.deleteProjectRequest());
   try {
     const response = await axios.delete(
-      `${server}/api/v1/project/delete/${id}`
+      `${server}/api/v1/project/delete/${id}`,
+      { withCredentials: true }
     );
     dispatch(projectSlice.actions.deleteProjectSuccess(response.data.message));
     dispatch(projectSlice.actions.clearAllErrors());
@@ -141,6 +144,7 @@ export const updateProject = (id, newData) => async (dispatch) => {
       `${server}/api/v1/project/update/${id}`,
       newData,
       {
+        withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       }
     );

@@ -73,7 +73,8 @@ export const getAllTimeline = () => async (dispatch) => {
   dispatch(timelineSlice.actions.getAllTimelineRequest());
   try {
     const response = await axios.get(
-      `${server}/api/v1/timeline/getall`
+      `${server}/api/v1/timeline/getall`,
+      { withCredentials: true }
     );
     dispatch(
       timelineSlice.actions.getAllTimelineSuccess(response.data.timelines)
@@ -93,6 +94,7 @@ export const addNewTimeline = (data) => async (dispatch) => {
       `${server}/api/v1/timeline/add`,
       data,
       {
+        withCredentials: true,
         headers: { "Content-Type": "application/json" },
       }
     );
@@ -110,7 +112,8 @@ export const deleteTimeline = (id) => async (dispatch) => {
   dispatch(timelineSlice.actions.deleteTimelineRequest());
   try {
     const response = await axios.delete(
-      `${server}/api/v1/timeline/delete/${id}`
+      `${server}/api/v1/timeline/delete/${id}`,
+      { withCredentials: true }
     );
     dispatch(
       timelineSlice.actions.deleteTimelineSuccess(response.data.message)
